@@ -84,6 +84,7 @@ const headerStyles = css({
 
 const navStyles = css({
 	display: 'flex',
+	alignItems: 'center',
 	gap: '2.75rem',
 });
 
