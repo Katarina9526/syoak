@@ -39,4 +39,6 @@ const globalStyles = css({
 
 const mainWrapper = css({
 	flex: 1,
+	paddingLeft: '4.375rem',
+	paddingRight: '4.375rem',
 });
