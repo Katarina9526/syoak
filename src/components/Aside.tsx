@@ -26,4 +26,5 @@ const asideStyles = css({
 	display: 'flex',
 	flexDirection: 'column',
 	alignItems: 'center',
+	paddingTop: '2rem',
 });

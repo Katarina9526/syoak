@@ -80,6 +80,8 @@ const signUpText = 'Sign up';
 const headerStyles = css({
 	display: 'flex',
 	justifyContent: 'space-between',
+	paddingTop: '1.75rem',
+	paddingBottom: '7.5rem',
 });
 
 const navStyles = css({
