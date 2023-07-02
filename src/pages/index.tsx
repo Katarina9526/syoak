@@ -1,100 +1,51 @@
 import * as React from 'react';
 import type { HeadFC, PageProps } from 'gatsby';
 import HomeLayout from '../layouts/HomeLayout';
-
-const pageStyles = {
-	color: '#232129',
-	padding: 96,
-	fontFamily: '-apple-system, Roboto, sans-serif, serif',
-};
-const headingStyles = {
-	marginTop: 0,
-	marginBottom: 64,
-	maxWidth: 320,
-};
-const headingAccentStyles = {
-	color: '#663399',
-};
-const paragraphStyles = {
-	marginBottom: 48,
-};
-const codeStyles = {
-	color: '#8A6534',
-	padding: 4,
-	backgroundColor: '#FFF4DB',
-	fontSize: '1.25rem',
-	borderRadius: 4,
-};
-const listStyles = {
-	marginBottom: 96,
-	paddingLeft: 0,
-};
-const doclistStyles = {
-	paddingLeft: 0,
-};
-const listItemStyles = {
-	fontWeight: 300,
-	fontSize: 24,
-	maxWidth: 560,
-	marginBottom: 30,
-};
-
-const linkStyle = {
-	color: '#8954A8',
-	fontWeight: 'bold',
-	fontSize: 16,
-	verticalAlign: '5%',
-};
-
-const docLinkStyle = {
-	...linkStyle,
-	listStyleType: 'none',
-	display: `inline-block`,
-	marginBottom: 24,
-	marginRight: 12,
-};
-
-const descriptionStyle = {
-	color: '#232129',
-	fontSize: 14,
-	marginTop: 10,
-	marginBottom: 0,
-	lineHeight: 1.25,
-};
-
-const docLinks = [
-	{
-		text: 'TypeScript Documentation',
-		url: 'https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/',
-		color: '#8954A8',
-	},
-	{
-		text: 'GraphQL Typegen Documentation',
-		url: 'https://www.gatsbyjs.com/docs/how-to/local-development/graphql-typegen/',
-		color: '#8954A8',
-	},
-];
-
-const badgeStyle = {
-	color: '#fff',
-	backgroundColor: '#088413',
-	border: '1px solid #088413',
-	fontSize: 11,
-	fontWeight: 'bold',
-	letterSpacing: 1,
-	borderRadius: 4,
-	padding: '4px 6px',
-	display: 'inline-block',
-	position: 'relative' as 'relative',
-	top: -2,
-	marginLeft: 10,
-	lineHeight: 1,
-};
+import { css } from '@emotion/react';
+import SplitScreenArticle from '../components/SplitScreenArticle';
+import { pageDescription, pageTitle, syoakSolutionSectionData } from '../content/homeContent';
+import { typography } from '../styles/typography';
 
 const IndexPage: React.FC<PageProps> = () => {
-	return <HomeLayout></HomeLayout>;
+	return (
+		<HomeLayout>
+			<section>
+				<h2 css={sectionTitleStyles}>{syoakSolutionSectionData.title}</h2>
+				<p css={sectionSubtitleStyles}>{syoakSolutionSectionData.subtitle}</p>
+
+				{syoakSolutionSectionData.articles.map((section) => (
+					<SplitScreenArticle
+						key={section.title}
+						title={section.title}
+						description={section.description}
+						imageComponent={section.imageComponent}
+						reverseOrder={section.reverseOrder}
+					/>
+				))}
+			</section>
+		</HomeLayout>
+	);
 };
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>;
+export const Head: HeadFC = () => (
+	<>
+		<title>{pageTitle}</title>
+		<meta name="description" content={pageDescription} />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={pageDescription} />
+	</>
+);
+
+const sectionTitleStyles = css({
+	...typography.h2,
+	maxWidth: '40.8125rem',
+	marginBottom: '2.5rem',
+});
+
+const sectionSubtitleStyles = css({
+	...typography.subtitle1,
+	maxWidth: '40.8125rem',
+	marginBottom: '7.75rem',
+});

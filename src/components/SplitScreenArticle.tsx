@@ -1,50 +1,53 @@
 import { css } from '@emotion/react';
 import { FC } from 'react';
-import { colors } from '../styles/colors';
 import { typography } from '../styles/typography';
 
-interface Props {
+export interface SplitScreenArticleProps {
 	title: string;
 	description: string;
 	imageComponent: JSX.Element;
 	reverseOrder?: boolean;
 }
 
-interface ColumnStyleProps {
-	reverseOrder?: boolean;
-}
-
-const SplitScreenSection: FC<Props> = ({ title, description, imageComponent, reverseOrder }) => {
+const SplitScreenArticle: FC<SplitScreenArticleProps> = ({ title, description, imageComponent, reverseOrder }) => {
 	return (
-		<section css={sectionStyles}>
+		<article css={sectionStyles(reverseOrder)}>
 			<div css={columnStyles}>
 				<h3 css={titleStyles}>{title}</h3>
 				<p css={descriptionStyles}>{description}</p>
 			</div>
-			<div css={columnStyles}>{imageComponent}</div>
-		</section>
+			<div css={imageColumnStyles(reverseOrder)}>{imageComponent}</div>
+		</article>
 	);
 };
 
-export default SplitScreenSection;
+export default SplitScreenArticle;
 
-const sectionStyles = ({ reverseOrder }: ColumnStyleProps) =>
+const sectionStyles = (reverseOrder?: boolean) =>
 	css({
 		display: 'flex',
 		flexDirection: reverseOrder ? 'row-reverse' : undefined,
+		gap: '1rem',
 		alignItems: 'center',
+		marginBottom: '9rem',
 	});
 
 const columnStyles = css({
 	flex: '1',
 });
 
+const imageColumnStyles = (reverseOrder?: boolean) =>
+	css(columnStyles, {
+		position: 'relative',
+		display: 'flex',
+		justifyContent: !reverseOrder ? 'flex-end' : undefined,
+	});
+
 const titleStyles = css({
 	...typography.h3,
-	color: colors.darkBlue,
+	marginBottom: '1rem',
 });
 
 const descriptionStyles = css({
 	...typography.body1,
-	color: colors.gray,
 });
