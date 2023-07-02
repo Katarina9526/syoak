@@ -81,7 +81,7 @@ const headerStyles = css({
 	display: 'flex',
 	justifyContent: 'space-between',
 	paddingTop: '1.75rem',
-	paddingBottom: '7.5rem',
+	marginBottom: '7.5rem',
 });
 
 const navStyles = css({
@@ -99,7 +99,6 @@ const linkStyles = css({
 
 const outlinedLinkStyles = css({
 	...typography.button,
-	fontWeight: 500,
 	color: colors.darkGray,
 	textDecoration: 'none',
 	border: `2px solid ${colors.blue}`,

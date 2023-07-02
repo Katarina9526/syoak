@@ -6,4 +6,5 @@ export const colors = {
 	gray: '#6A6A6A',
 	captionGray: '#666666',
 	white: '#FFFFFF',
+	black: '#000000',
 };

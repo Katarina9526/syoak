@@ -3,12 +3,29 @@ import type { HeadFC, PageProps } from 'gatsby';
 import HomeLayout from '../layouts/HomeLayout';
 import { css } from '@emotion/react';
 import SplitScreenArticle from '../components/SplitScreenArticle';
-import { pageDescription, pageTitle, syoakSolutionSectionData } from '../content/homeContent';
+import {
+	learnMoreText,
+	mainSubtitleText,
+	mainTitleText,
+	pageDescription,
+	pageTitle,
+	syoakSolutionSectionData,
+} from '../content/homeContent';
 import { typography } from '../styles/typography';
+import { colors } from '../styles/colors';
+import ArrowIcon from '../icons/ArrowIcon';
 
 const IndexPage: React.FC<PageProps> = () => {
 	return (
 		<HomeLayout>
+			<section css={introSectionStyles}>
+				<h1 css={mainTitleStyles}>{mainTitleText}</h1>
+				<p css={mainSubtitleStyles}>{mainSubtitleText}</p>
+				<button css={learnMoreButtonStyles}>
+					<ArrowIcon /> {learnMoreText}
+				</button>
+			</section>
+
 			<section>
 				<h2 css={sectionTitleStyles}>{syoakSolutionSectionData.title}</h2>
 				<p css={sectionSubtitleStyles}>{syoakSolutionSectionData.subtitle}</p>
@@ -37,6 +54,26 @@ export const Head: HeadFC = () => (
 		<meta property="og:description" content={pageDescription} />
 	</>
 );
+
+const introSectionStyles = css({
+	marginBottom: '9rem',
+});
+
+const mainTitleStyles = css({
+	...typography.h1,
+});
+
+const mainSubtitleStyles = css({
+	...typography.subtitle1,
+	maxWidth: '33.8125rem',
+	marginBottom: '1.5rem',
+});
+
+const learnMoreButtonStyles = css({
+	...typography.button,
+	backgroundColor: colors.blue,
+	padding: '0.75rem 1.06rem 0.69rem',
+});
 
 const sectionTitleStyles = css({
 	...typography.h2,

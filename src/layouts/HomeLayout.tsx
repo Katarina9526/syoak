@@ -35,6 +35,10 @@ const globalStyles = css({
 		margin: 0,
 		fontFamily: 'Inter',
 	},
+	button: {
+		fontFamily: 'Inter',
+		cursor: 'pointer',
+	},
 });
 
 const mainWrapper = css({

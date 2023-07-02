@@ -45,7 +45,6 @@ const imageColumnStyles = (reverseOrder?: boolean) =>
 
 const titleStyles = css({
 	...typography.h3,
-	marginBottom: '1rem',
 });
 
 const descriptionStyles = css({

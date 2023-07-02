@@ -10,6 +10,11 @@ export const pageTitle = 'Homepage';
 export const pageDescription =
 	'SYOAK industry consists of companies that own and operate extensive networks of pipeline assets to connect producers of oil, natural gas and natural gas liquids from the prolific North American resources to key markets. We also distribute natural gas to a growing base of industrial and residential customers through transmission pipelines.';
 
+export const mainTitleText = 'Our bussines takes the industry of oil & gass to a new level.';
+export const mainSubtitleText =
+	'We have a long and proud history givin emphasis to environment social and economic outcomes to deliver places that respond';
+export const learnMoreText = 'Learn more';
+
 const engineOverlayStyles = css({
 	display: 'flex',
 	gap: '1.01rem',
